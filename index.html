@@ -3,18 +3,27 @@
 <head>
     <meta charset='utf-8'/>
     <meta content='width=device-width,initial-scale=1' name='viewport'/>
-    <title>FLST Shoes - Company Profile</title>
+    <title>FlatShoes - Company Profile</title>
     
     <link href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Montserrat:wght@300;400;600&amp;display=swap' rel='stylesheet'/>
 
     <style>
-        /* KODE CSS UNTUK TAMPILAN ESTETIK */
+        /* BARU: PALET WARNA MENARIK & ESTETIK */
+        :root {
+            --bg-main: #f7f4ee;       /* Cream Pastel lembut untuk background utama */
+            --bg-card: #fcfbf7;       /* Putih tulang hangat untuk kotak produk */
+            --primary: #c27d65;       /* Warm Terracotta untuk aksen utama & tombol */
+            --secondary: #8da192;     /* Soft Sage Green untuk variasi elemen */
+            --text-dark: #3d3532;     /* Cokelat gelap (bukan hitam pekat) agar teks lebih menyatu */
+            --text-light: #fff;
+        }
+
         body {
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
-            background-color: #fcfbfa;
-            color: #333;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
             line-height: 1.6;
         }
         
@@ -24,24 +33,31 @@
             align-items: center;
             padding: 20px 5%;
             background: #fff;
-            border-bottom: 1px solid #f0ede9;
+            border-bottom: 2px solid var(--primary);
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
             letter-spacing: 2px;
+            color: var(--primary);
         }
         nav a {
             margin: 0 15px;
             text-decoration: none;
-            color: #555;
+            color: var(--text-dark);
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: var(--primary);
         }
 
         .container {
@@ -50,221 +66,58 @@
             padding: 60px 20px;
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION (BANNER UTAMA) */
         .hero {
             display: flex;
             align-items: center;
             gap: 40px;
-            background: #f4efe9;
+            background: linear-gradient(135deg, #eae1d4 0%, #dfd3c3 100%);
             padding: 60px 5%;
-            border-radius: 4px;
+            border-radius: 12px;
             margin-bottom: 60px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
         .hero-text { flex: 1; }
         .hero-text h1 {
             font-family: 'Playfair Display', serif;
             font-size: 42px;
             margin-bottom: 20px;
-            color: #222;
+            color: var(--text-dark);
         }
         .hero-text p {
             font-size: 15px;
-            color: #666;
+            color: #554e4b;
             margin-bottom: 30px;
         }
         .hero-img { flex: 1; text-align: right; }
-        .hero-img img { max-width: 100%; border-radius: 4px; }
+        .hero-img img { max-width: 100%; border-radius: 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
 
-        /* JENDELA FILOSOFI / TENTANG KAMI */
+        /* BUTTON */
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 14px 35px;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(194, 125, 101, 0.3);
+        }
+        .btn-primary:hover {
+            background: #ab6a53;
+            transform: translateY(-2px);
+        }
+
+        /* TENTANG KAMI */
         .about-section {
             text-align: center;
             max-width: 800px;
             margin: 0 auto 80px;
-        }
-        .about-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-        .about-section p {
-            color: #555;
-            font-size: 16px;
-        }
-
-        /* TIGA PILAR UTAMA (VALUES) */
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 80px;
-        }
-        .value-card {
             background: #fff;
-            padding: 40px 30px;
-            text-align: center;
-            border-radius: 4px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.01);
-        }
-        .value-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-        .value-card p {
-            font-size: 14px;
-            color: #777;
-        }
-
-        /* SHOWCASE KOLEKSI (TANPA HARGA) */
-        .showcase-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .showcase-title h2 { font-family: 'Playfair Display', serif; font-size: 32px; margin: 0; }
-        .showcase-title span { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #999; }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 80px;
-        }
-        .gallery-item {
-            text-align: center;
-            background: #fff;
-            padding: 15px;
-        }
-        .gallery-item img { max-width: 100%; height: auto; }
-        .gallery-item h4 { margin: 15px 0 5px; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
-        .gallery-item p { margin: 0; font-size: 12px; color: #888; font-style: italic; }
-
-        /* KONTAK & LOKASI */
-        .contact-section {
-            background: #eae3db;
-            padding: 5px 5%;
-            border-radius: 4px;
-            text-align: center;
-        }
-        .contact-content {
-            max-width: 600px;
-            margin: 40px auto;
-        }
-        .contact-content h2 { font-family: 'Playfair Display', serif; font-size: 32px; }
-        .contact-info {
-            margin-top: 30px;
-            font-size: 14px;
-            color: #444;
-        }
-        .contact-info p { margin: 10px 0; }
-
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 12px;
-            color: #888;
-            border-top: 1px solid #f0ede9;
-            margin-top: 60px;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; }
-            .hero-img { text-align: center; }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class='logo'>FLST SHOES</div>
-        <nav>
-            <a href='#about'>Tentang Kami</a>
-            <a href='#values'>Keunggulan</a>
-            <a href='#koleksi'>Koleksi</a>
-            <a href='#kontak'>Hubungi Kami</a>
-        </nav>
-    </header>
-
-    <div class='container'>
-        
-        <section class='hero'>
-            <div class='hero-text'>
-                <h1>Langkah Nyaman, Tampil Elegan Setiap Hari.</h1>
-                <p>FLST Shoes menghadirkan koleksi flatshoes eksklusif yang memadukan keindahan desain minimalis modern dengan kenyamanan maksimal untuk wanita aktif.</p>
-                <a href='#kontak' style='display:inline-block; background:#111; color:#fff; padding:12px 30px; text-decoration:none; font-size:12px; letter-spacing:2px; text-transform:uppercase;'>Kemitraan & Kontak</a>
-            </div>
-            <div class='hero-img'>
-                <img src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&amp;auto=format&amp;fit=crop&amp;q=60' alt='FLST Shoes Banner'/>
-            </div>
-        </section>
-
-        <section class='about-section' id='about'>
-            <h2>Cerita FLST Shoes</h2>
-            <p>Berdiri dengan visi untuk mendefinisikan ulang arti kenyamanan, FLST Shoes berkomitmen menciptakan alas kaki berkualitas tinggi tanpa mengorbankan estetika. Setiap pasang sepatu kami dirancang secara presisi menggunakan bahan pilihan terbaik untuk memastikan Anda tetap percaya diri di setiap langkah.</p>
-        </section>
-
-        <section class='values-grid' id='values'>
-            <div class='value-card'>
-                <h3>Kualitas Premium</h3>
-                <p>Kami hanya menggunakan material pilihan yang tahan lama, lembut di kulit, dan tidak membuat kaki lecet.</p>
-            </div>
-            <div class='value-card'>
-                <h3>Desain Ergonomis</h3>
-                <p>Bentuk sol dalam (insole) disesuaikan dengan kontur kaki wanita Asia untuk kenyamanan berjalan seharian.</p>
-            </div>
-            <div class='value-card'>
-                <h3>Estetika Minimalis</h3>
-                <p>Warna-warna earthy dan pastel yang mudah dipadupadankan dengan berbagai gaya pakaian Anda.</p>
-            </div>
-        </section>
-
-        <section class='showcase-title' id='koleksi'>
-            <h2>Signature Collection</h2>
-            <span>Desain Terbaik Kami</span>
-        </section>
-
-        <div class='gallery-grid'>
-            <div class='gallery-item'>
-                <img src='https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&amp;auto=format&amp;fit=crop&amp;q=60' alt='Basic Flats'/>
-                <h4>Basic Flats Series</h4>
-                <p>Nyaman untuk aktivitas harian</p>
-            </div>
-            <div class='gallery-item'>
-                <img src='https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&amp;auto=format&amp;fit=crop&amp;q=60' alt='Premium Flats'/>
-                <h4>Premium Pointed</h4>
-                <p>Sentuhan formal dan elegan</p>
-            </div>
-            <div class='gallery-item'>
-                <img src='https://images.unsplash.com/photo-1603252109303-2751441dd157?w=400&amp;auto=format&amp;fit=crop&amp;q=60' alt='Trendy Flats'/>
-                <h4>Trendy Ribbon</h4>
-                <p>Kekinian dengan detail manis</p>
-            </div>
-            <div class='gallery-item'>
-                <img src='https://images.unsplash.com/photo-1607522370275-f14206abe5d3?w=400&amp;auto=format&amp;fit=crop&amp;q=60' alt='Casual Flats'/>
-                <h4>Casual Slip-On</h4>
-                <p>Santai namun tetap chic</p>
-            </div>
-        </div>
-
-        <section class='contact-section' id='kontak'>
-            <div class='contact-content'>
-                <h2>Hubungi Kantor Kami</h2>
-                <p>Tertarik untuk menjadi reseller, memesan dalam jumlah besar (B2B), atau memiliki pertanyaan seputar produk kami? Silakan hubungi kami.</p>
-                
-                <div class='contact-info'>
-                    <p><strong>Alamat:</strong> Jl. Estetika Raya No. 45, Jakarta Selatan, Indonesia</p>
-                    <p><strong>Email:</strong> info@flstshoes.com</p>
-                    <p><strong>WhatsApp:</strong> +62 812-3456-7890</p>
-                    <p><strong>Jam Operasional:</strong> Senin - Jumat (09.00 - 17.00 WIB)</p>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <footer>
-        <p>&copy; 2026 FLST Shoes. All Rights Reserved. Crafted with Elegance.</p>
-    </footer>
-
-</body>
-</html>
+            padding: 50px 40px;
+            border-radius: 12px;
+            box
